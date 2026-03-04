@@ -71,52 +71,52 @@ const consultationTypes = [
     title: "Videochamada",
     desc: "Consulta por vídeo em tempo real com o veterinário",
     duration: "30-60 min",
-    color: "text-blue-400",
-    bg: "bg-blue-400/10",
+    color: "text-blue-600",
+    bg: "bg-blue-50",
   },
   {
     icon: MessageCircle,
     title: "Chat Assíncrono",
     desc: "Envie fotos, vídeos e perguntas, receba resposta em 24h",
     duration: "Resposta em 24h",
-    color: "text-emerald-400",
-    bg: "bg-emerald-400/10",
+    color: "text-emerald-600",
+    bg: "bg-emerald-50",
   },
   {
     icon: Calendar,
     title: "Acompanhamento",
     desc: "Plano de acompanhamento mensal com check-ins regulares",
     duration: "Mensal",
-    color: "text-purple-400",
-    bg: "bg-purple-400/10",
+    color: "text-purple-600",
+    bg: "bg-purple-50",
   },
 ];
 
 export default function ProfessionalPage() {
   return (
-    <div className="min-h-screen bg-slate-900">
+    <div className="min-h-screen bg-white">
       <Header />
 
       <main className="pt-24 pb-20 px-4 sm:px-6 lg:px-8">
         <div className="max-w-7xl mx-auto">
           {/* Header */}
           <div className="text-center mb-12">
-            <div className="inline-flex items-center gap-2 bg-blue-500/10 border border-blue-500/30 rounded-full px-4 py-2 mb-4">
-              <Stethoscope className="w-4 h-4 text-blue-400" />
-              <span className="text-blue-400 text-sm font-medium">Consulta Profissional</span>
+            <div className="inline-flex items-center gap-2 bg-blue-50 border border-blue-200 rounded-full px-4 py-2 mb-4">
+              <Stethoscope className="w-4 h-4 text-blue-600" />
+              <span className="text-blue-700 text-sm font-medium">Consulta Profissional</span>
             </div>
-            <h1 className="text-4xl sm:text-5xl font-bold text-white mb-4">
+            <h1 className="text-4xl sm:text-5xl font-bold text-gray-900 mb-4">
               Fale com um <span className="gradient-text">Veterinário</span>
             </h1>
-            <p className="text-slate-400 text-lg max-w-2xl mx-auto">
+            <p className="text-gray-500 text-lg max-w-2xl mx-auto">
               Conecte-se com veterinários nutricionistas certificados para orientação personalizada
               sobre a dieta do seu pet.
             </p>
           </div>
 
           {/* Why Professional */}
-          <div className="bg-gradient-to-br from-blue-500/10 to-emerald-500/10 border border-blue-500/20 rounded-2xl p-8 mb-12">
-            <h2 className="text-white font-bold text-xl mb-6 text-center">
+          <div className="bg-gradient-to-br from-blue-50 to-emerald-50 border border-blue-100 rounded-2xl p-8 mb-12">
+            <h2 className="text-gray-900 font-bold text-xl mb-6 text-center">
               Por que consultar um profissional?
             </h2>
             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
@@ -144,8 +144,8 @@ export default function ProfessionalPage() {
               ].map((item) => (
                 <div key={item.title} className="text-center">
                   <div className="text-3xl mb-2">{item.icon}</div>
-                  <div className="text-white font-medium text-sm mb-1">{item.title}</div>
-                  <div className="text-slate-400 text-xs">{item.desc}</div>
+                  <div className="text-gray-900 font-medium text-sm mb-1">{item.title}</div>
+                  <div className="text-gray-500 text-xs">{item.desc}</div>
                 </div>
               ))}
             </div>
@@ -153,17 +153,17 @@ export default function ProfessionalPage() {
 
           {/* Consultation Types */}
           <div className="mb-12">
-            <h2 className="text-white font-bold text-2xl mb-6">Tipos de Consulta</h2>
+            <h2 className="text-gray-900 font-bold text-2xl mb-6">Tipos de Consulta</h2>
             <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
               {consultationTypes.map((type) => {
                 const Icon = type.icon;
                 return (
-                  <div key={type.title} className="bg-slate-800 border border-slate-700 rounded-xl p-5">
+                  <div key={type.title} className="bg-white border border-gray-200 rounded-xl p-5 shadow-sm">
                     <div className={`w-10 h-10 ${type.bg} rounded-xl flex items-center justify-center mb-3`}>
                       <Icon className={`w-5 h-5 ${type.color}`} />
                     </div>
-                    <h3 className="text-white font-semibold mb-1">{type.title}</h3>
-                    <p className="text-slate-400 text-sm mb-2">{type.desc}</p>
+                    <h3 className="text-gray-900 font-semibold mb-1">{type.title}</h3>
+                    <p className="text-gray-500 text-sm mb-2">{type.desc}</p>
                     <span className={`text-xs font-medium ${type.color}`}>{type.duration}</span>
                   </div>
                 );
@@ -173,52 +173,52 @@ export default function ProfessionalPage() {
 
           {/* Veterinarians */}
           <div className="mb-12">
-            <h2 className="text-white font-bold text-2xl mb-6">Os Nossos Especialistas</h2>
+            <h2 className="text-gray-900 font-bold text-2xl mb-6">Os Nossos Especialistas</h2>
             <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
               {vets.map((vet) => (
                 <div
                   key={vet.id}
-                  className={`card-hover bg-slate-800 border rounded-2xl p-6 ${
-                    vet.available ? "border-slate-700" : "border-slate-700 opacity-75"
+                  className={`card-hover bg-white border rounded-2xl p-6 shadow-sm ${
+                    vet.available ? "border-gray-200" : "border-gray-100 opacity-75"
                   }`}
                 >
                   <div className="flex items-start gap-4 mb-4">
                     <div className="text-4xl">{vet.emoji}</div>
                     <div className="flex-1">
                       <div className="flex items-center justify-between">
-                        <h3 className="text-white font-bold text-lg">{vet.name}</h3>
+                        <h3 className="text-gray-900 font-bold text-lg">{vet.name}</h3>
                         <span
                           className={`text-xs font-medium px-2 py-1 rounded-full ${
                             vet.available
-                              ? "bg-emerald-500/20 text-emerald-400"
-                              : "bg-slate-700 text-slate-500"
+                              ? "bg-emerald-50 text-emerald-700"
+                              : "bg-gray-100 text-gray-400"
                           }`}
                         >
                           {vet.available ? "Disponível" : "Indisponível"}
                         </span>
                       </div>
-                      <div className="text-emerald-400 text-sm">{vet.specialty}</div>
+                      <div className="text-emerald-600 text-sm">{vet.specialty}</div>
                       <div className="flex items-center gap-3 mt-1">
                         <div className="flex items-center gap-1">
                           <Star className="w-3.5 h-3.5 text-yellow-400 fill-yellow-400" />
-                          <span className="text-white text-sm font-medium">{vet.rating}</span>
-                          <span className="text-slate-500 text-xs">({vet.reviews})</span>
+                          <span className="text-gray-900 text-sm font-medium">{vet.rating}</span>
+                          <span className="text-gray-400 text-xs">({vet.reviews})</span>
                         </div>
-                        <span className="text-slate-500 text-xs">•</span>
-                        <span className="text-slate-400 text-xs">{vet.experience} experiência</span>
+                        <span className="text-gray-300 text-xs">•</span>
+                        <span className="text-gray-400 text-xs">{vet.experience} experiência</span>
                       </div>
                     </div>
                   </div>
 
-                  <p className="text-slate-400 text-sm leading-relaxed mb-4">{vet.bio}</p>
+                  <p className="text-gray-500 text-sm leading-relaxed mb-4">{vet.bio}</p>
 
                   <div className="flex flex-wrap gap-2 mb-4">
                     {vet.certifications.map((cert) => (
                       <span
                         key={cert}
-                        className="bg-slate-700 text-slate-300 text-xs px-2 py-1 rounded-full flex items-center gap-1"
+                        className="bg-gray-100 text-gray-600 text-xs px-2 py-1 rounded-full flex items-center gap-1"
                       >
-                        <Award className="w-3 h-3 text-yellow-400" />
+                        <Award className="w-3 h-3 text-yellow-500" />
                         {cert}
                       </span>
                     ))}
@@ -226,9 +226,9 @@ export default function ProfessionalPage() {
 
                   <div className="flex items-center justify-between">
                     <div>
-                      <div className="text-white font-bold">{vet.price}</div>
+                      <div className="text-gray-900 font-bold">{vet.price}</div>
                       {vet.available && (
-                        <div className="text-slate-500 text-xs flex items-center gap-1">
+                        <div className="text-gray-400 text-xs flex items-center gap-1">
                           <Clock className="w-3 h-3" />
                           Próximo slot: {vet.nextSlot}
                         </div>
@@ -239,7 +239,7 @@ export default function ProfessionalPage() {
                       className={`px-4 py-2 rounded-lg text-sm font-semibold transition-all ${
                         vet.available
                           ? "btn-primary text-white"
-                          : "bg-slate-700 text-slate-500 cursor-not-allowed"
+                          : "bg-gray-100 text-gray-400 cursor-not-allowed"
                       }`}
                     >
                       {vet.available ? "Agendar" : "Indisponível"}
@@ -251,8 +251,8 @@ export default function ProfessionalPage() {
           </div>
 
           {/* How it works */}
-          <div className="bg-slate-800 border border-slate-700 rounded-2xl p-8 mb-12">
-            <h2 className="text-white font-bold text-2xl mb-8 text-center">Como Funciona</h2>
+          <div className="bg-gray-50 border border-gray-200 rounded-2xl p-8 mb-12">
+            <h2 className="text-gray-900 font-bold text-2xl mb-8 text-center">Como Funciona</h2>
             <div className="grid grid-cols-1 md:grid-cols-4 gap-6">
               {[
                 { step: "1", title: "Escolha o Especialista", desc: "Selecione o veterinário com base na especialidade e disponibilidade", icon: "🔍" },
@@ -265,18 +265,18 @@ export default function ProfessionalPage() {
                   <div className="w-8 h-8 bg-emerald-500 rounded-full flex items-center justify-center text-white font-bold text-sm mx-auto mb-3">
                     {item.step}
                   </div>
-                  <h3 className="text-white font-semibold text-sm mb-2">{item.title}</h3>
-                  <p className="text-slate-400 text-xs leading-relaxed">{item.desc}</p>
+                  <h3 className="text-gray-900 font-semibold text-sm mb-2">{item.title}</h3>
+                  <p className="text-gray-500 text-xs leading-relaxed">{item.desc}</p>
                 </div>
               ))}
             </div>
           </div>
 
           {/* Included in subscription */}
-          <div className="bg-gradient-to-br from-emerald-500/20 to-blue-500/20 border border-emerald-500/30 rounded-2xl p-8">
+          <div className="bg-gradient-to-br from-emerald-50 to-blue-50 border border-emerald-100 rounded-2xl p-8">
             <div className="flex items-center gap-3 mb-6">
-              <CheckCircle className="w-6 h-6 text-emerald-400" />
-              <h2 className="text-white font-bold text-xl">Incluído no Plano Anual</h2>
+              <CheckCircle className="w-6 h-6 text-emerald-600" />
+              <h2 className="text-gray-900 font-bold text-xl">Incluído no Plano Anual</h2>
             </div>
             <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
               {[
@@ -288,8 +288,8 @@ export default function ProfessionalPage() {
                 "Suporte entre consultas via chat",
               ].map((item) => (
                 <div key={item} className="flex items-center gap-2">
-                  <CheckCircle className="w-4 h-4 text-emerald-400 flex-shrink-0" />
-                  <span className="text-slate-300 text-sm">{item}</span>
+                  <CheckCircle className="w-4 h-4 text-emerald-600 flex-shrink-0" />
+                  <span className="text-gray-700 text-sm">{item}</span>
                 </div>
               ))}
             </div>

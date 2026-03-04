@@ -110,21 +110,21 @@ export default function BlogPage() {
   const regularPosts = posts.filter((p) => !p.featured);
 
   return (
-    <div className="min-h-screen bg-slate-900">
+    <div className="min-h-screen bg-white">
       <Header />
 
       <main className="pt-24 pb-20 px-4 sm:px-6 lg:px-8">
         <div className="max-w-7xl mx-auto">
           {/* Header */}
           <div className="text-center mb-12">
-            <div className="inline-flex items-center gap-2 bg-emerald-500/10 border border-emerald-500/30 rounded-full px-4 py-2 mb-4">
-              <BookOpen className="w-4 h-4 text-emerald-400" />
-              <span className="text-emerald-400 text-sm font-medium">Blog & Conteúdo</span>
+            <div className="inline-flex items-center gap-2 bg-emerald-50 border border-emerald-200 rounded-full px-4 py-2 mb-4">
+              <BookOpen className="w-4 h-4 text-emerald-600" />
+              <span className="text-emerald-700 text-sm font-medium">Blog & Conteúdo</span>
             </div>
-            <h1 className="text-4xl sm:text-5xl font-bold text-white mb-4">
+            <h1 className="text-4xl sm:text-5xl font-bold text-gray-900 mb-4">
               Nutrição Animal em <span className="gradient-text">Foco</span>
             </h1>
-            <p className="text-slate-400 text-lg max-w-2xl mx-auto">
+            <p className="text-gray-500 text-lg max-w-2xl mx-auto">
               Artigos, dicas e novidades sobre nutrição e saúde animal escritos por veterinários e especialistas.
             </p>
           </div>
@@ -137,7 +137,7 @@ export default function BlogPage() {
                 className={`px-4 py-2 rounded-full text-sm font-medium transition-all ${
                   cat === "Todos"
                     ? "bg-emerald-500 text-white"
-                    : "bg-slate-800 border border-slate-700 text-slate-400 hover:border-emerald-500 hover:text-emerald-400"
+                    : "bg-white border border-gray-200 text-gray-500 hover:border-emerald-400 hover:text-emerald-600"
                 }`}
               >
                 {cat}
@@ -147,19 +147,19 @@ export default function BlogPage() {
 
           {/* Featured Post */}
           {featuredPost && (
-            <div className="bg-gradient-to-br from-emerald-500/20 to-slate-800 border border-emerald-500/30 rounded-2xl p-8 mb-10">
+            <div className="bg-gradient-to-br from-emerald-50 to-white border border-emerald-200 rounded-2xl p-8 mb-10">
               <div className="flex items-center gap-2 mb-4">
                 <span className="bg-emerald-500 text-white text-xs font-bold px-3 py-1 rounded-full">
                   DESTAQUE
                 </span>
-                <span className="text-slate-400 text-sm">{featuredPost.category}</span>
+                <span className="text-gray-500 text-sm">{featuredPost.category}</span>
               </div>
               <div className="grid grid-cols-1 md:grid-cols-2 gap-8 items-center">
                 <div>
                   <div className="text-6xl mb-4">{featuredPost.image}</div>
-                  <h2 className="text-2xl font-bold text-white mb-3">{featuredPost.title}</h2>
-                  <p className="text-slate-300 leading-relaxed mb-4">{featuredPost.excerpt}</p>
-                  <div className="flex items-center gap-4 text-slate-400 text-sm mb-4">
+                  <h2 className="text-2xl font-bold text-gray-900 mb-3">{featuredPost.title}</h2>
+                  <p className="text-gray-600 leading-relaxed mb-4">{featuredPost.excerpt}</p>
+                  <div className="flex items-center gap-4 text-gray-400 text-sm mb-4">
                     <span className="flex items-center gap-1">
                       <User className="w-4 h-4" />
                       {featuredPost.author}
@@ -181,7 +181,7 @@ export default function BlogPage() {
                   {featuredPost.tags.map((tag) => (
                     <span
                       key={tag}
-                      className="bg-slate-800 border border-slate-600 text-slate-300 text-xs px-3 py-1 rounded-full flex items-center gap-1"
+                      className="bg-white border border-gray-200 text-gray-600 text-xs px-3 py-1 rounded-full flex items-center gap-1"
                     >
                       <Tag className="w-3 h-3" />
                       {tag}
@@ -197,22 +197,22 @@ export default function BlogPage() {
             {regularPosts.map((post) => (
               <article
                 key={post.id}
-                className="card-hover bg-slate-800 border border-slate-700 rounded-2xl overflow-hidden"
+                className="card-hover bg-white border border-gray-100 rounded-2xl overflow-hidden shadow-sm"
               >
                 <div className="p-6">
                   <div className="text-4xl mb-4">{post.image}</div>
                   <div className="flex items-center gap-2 mb-3">
-                    <span className="bg-slate-700 text-slate-300 text-xs px-2 py-1 rounded-full">
+                    <span className="bg-gray-100 text-gray-600 text-xs px-2 py-1 rounded-full">
                       {post.category}
                     </span>
                   </div>
-                  <h3 className="text-white font-semibold text-lg mb-2 leading-snug">
+                  <h3 className="text-gray-900 font-semibold text-lg mb-2 leading-snug">
                     {post.title}
                   </h3>
-                  <p className="text-slate-400 text-sm leading-relaxed mb-4 line-clamp-3">
+                  <p className="text-gray-500 text-sm leading-relaxed mb-4 line-clamp-3">
                     {post.excerpt}
                   </p>
-                  <div className="flex items-center justify-between text-slate-500 text-xs mb-4">
+                  <div className="flex items-center justify-between text-gray-400 text-xs mb-4">
                     <span className="flex items-center gap-1">
                       <User className="w-3 h-3" />
                       {post.author}
@@ -226,7 +226,7 @@ export default function BlogPage() {
                     {post.tags.map((tag) => (
                       <span
                         key={tag}
-                        className="bg-slate-700 text-slate-400 text-xs px-2 py-0.5 rounded-full"
+                        className="bg-gray-100 text-gray-500 text-xs px-2 py-0.5 rounded-full"
                       >
                         #{tag}
                       </span>
@@ -234,7 +234,7 @@ export default function BlogPage() {
                   </div>
                   <Link
                     href={`/blog/${post.slug}`}
-                    className="text-emerald-400 hover:text-emerald-300 text-sm font-medium flex items-center gap-1 transition-colors"
+                    className="text-emerald-600 hover:text-emerald-700 text-sm font-medium flex items-center gap-1 transition-colors"
                   >
                     Ler mais
                     <ArrowRight className="w-4 h-4" />
@@ -245,18 +245,18 @@ export default function BlogPage() {
           </div>
 
           {/* Newsletter */}
-          <div className="mt-16 bg-gradient-to-br from-emerald-500/20 to-blue-500/20 border border-emerald-500/30 rounded-2xl p-10 text-center">
-            <h3 className="text-white font-bold text-2xl mb-3">
+          <div className="mt-16 bg-gradient-to-br from-emerald-50 to-blue-50 border border-emerald-100 rounded-2xl p-10 text-center">
+            <h3 className="text-gray-900 font-bold text-2xl mb-3">
               Receba os melhores artigos na sua caixa de entrada
             </h3>
-            <p className="text-slate-400 mb-6">
+            <p className="text-gray-500 mb-6">
               Subscreva a nossa newsletter e receba dicas semanais de nutrição animal.
             </p>
             <div className="flex flex-col sm:flex-row gap-3 max-w-md mx-auto">
               <input
                 type="email"
                 placeholder="O seu email"
-                className="flex-1 bg-slate-800 border border-slate-600 text-white rounded-xl px-4 py-3 text-sm focus:outline-none focus:border-emerald-500"
+                className="flex-1 bg-white border border-gray-300 text-gray-700 rounded-xl px-4 py-3 text-sm focus:outline-none focus:border-emerald-500"
               />
               <button className="btn-primary text-white font-semibold px-6 py-3 rounded-xl text-sm">
                 Subscrever

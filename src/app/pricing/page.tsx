@@ -135,27 +135,27 @@ export default function PricingPage() {
   };
 
   return (
-    <div className="min-h-screen bg-slate-900">
+    <div className="min-h-screen bg-white">
       <Header />
 
       <main className="pt-24 pb-20 px-4 sm:px-6 lg:px-8">
         <div className="max-w-7xl mx-auto">
           {/* Header */}
           <div className="text-center mb-12">
-            <h1 className="text-4xl sm:text-5xl font-bold text-white mb-4">
+            <h1 className="text-4xl sm:text-5xl font-bold text-gray-900 mb-4">
               Planos e <span className="gradient-text">Preços</span>
             </h1>
-            <p className="text-slate-400 text-lg max-w-2xl mx-auto mb-6">
+            <p className="text-gray-500 text-lg max-w-2xl mx-auto mb-6">
               Escolha o plano ideal para cuidar do seu pet. Cancele quando quiser, sem compromisso.
             </p>
 
             {/* Currency Selector */}
             <div className="flex items-center justify-center gap-3 flex-wrap">
-              <span className="text-slate-400 text-sm">Moeda:</span>
+              <span className="text-gray-500 text-sm">Moeda:</span>
               <select
                 value={currency}
                 onChange={(e) => setCurrency(e.target.value)}
-                className="bg-slate-800 border border-slate-600 text-white rounded-lg px-3 py-2 text-sm focus:outline-none focus:border-emerald-500"
+                className="bg-white border border-gray-300 text-gray-700 rounded-lg px-3 py-2 text-sm focus:outline-none focus:border-emerald-500"
               >
                 {Object.entries(currencies).map(([code, info]) => (
                   <option key={code} value={code}>
@@ -164,10 +164,10 @@ export default function PricingPage() {
                 ))}
               </select>
               {loading && (
-                <span className="text-slate-500 text-xs">Detectando moeda local...</span>
+                <span className="text-gray-400 text-xs">Detectando moeda local...</span>
               )}
               {!loading && (
-                <span className="text-emerald-400 text-xs flex items-center gap-1">
+                <span className="text-emerald-600 text-xs flex items-center gap-1">
                   <Zap className="w-3 h-3" />
                   Moeda detectada automaticamente
                 </span>
@@ -177,13 +177,13 @@ export default function PricingPage() {
 
           {/* Payment Method Toggle */}
           <div className="flex justify-center mb-10">
-            <div className="bg-slate-800 border border-slate-700 rounded-xl p-1 flex gap-1">
+            <div className="bg-gray-100 border border-gray-200 rounded-xl p-1 flex gap-1">
               <button
                 onClick={() => setPaymentMethod("stripe")}
                 className={`flex items-center gap-2 px-5 py-2.5 rounded-lg text-sm font-medium transition-all ${
                   paymentMethod === "stripe"
-                    ? "bg-emerald-500 text-white"
-                    : "text-slate-400 hover:text-white"
+                    ? "bg-emerald-500 text-white shadow-sm"
+                    : "text-gray-500 hover:text-gray-700"
                 }`}
               >
                 <CreditCard className="w-4 h-4" />
@@ -193,8 +193,8 @@ export default function PricingPage() {
                 onClick={() => setPaymentMethod("paypal")}
                 className={`flex items-center gap-2 px-5 py-2.5 rounded-lg text-sm font-medium transition-all ${
                   paymentMethod === "paypal"
-                    ? "bg-blue-500 text-white"
-                    : "text-slate-400 hover:text-white"
+                    ? "bg-blue-500 text-white shadow-sm"
+                    : "text-gray-500 hover:text-gray-700"
                 }`}
               >
                 <span className="font-bold text-xs">PP</span>
@@ -210,8 +210,8 @@ export default function PricingPage() {
                 key={plan.id}
                 className={`relative rounded-2xl border p-8 flex flex-col ${
                   plan.popular
-                    ? "bg-gradient-to-b from-emerald-500/20 to-slate-800 border-emerald-500 pulse-glow"
-                    : "bg-slate-800 border-slate-700"
+                    ? "bg-gradient-to-b from-emerald-50 to-white border-emerald-300 pulse-glow"
+                    : "bg-white border-gray-200 shadow-sm"
                 }`}
               >
                 {plan.popular && (
@@ -232,19 +232,19 @@ export default function PricingPage() {
                 )}
 
                 <div className="mb-6">
-                  <h3 className="text-white font-bold text-xl mb-1">{plan.name}</h3>
-                  <p className="text-slate-400 text-sm">{plan.description}</p>
+                  <h3 className="text-gray-900 font-bold text-xl mb-1">{plan.name}</h3>
+                  <p className="text-gray-500 text-sm">{plan.description}</p>
                 </div>
 
                 <div className="mb-6">
                   <div className="flex items-end gap-1">
-                    <span className="text-4xl font-bold text-white">
+                    <span className="text-4xl font-bold text-gray-900">
                       {formatPrice(plan.basePrice, currency)}
                     </span>
-                    <span className="text-slate-400 text-sm mb-1">{plan.periodShort}</span>
+                    <span className="text-gray-400 text-sm mb-1">{plan.periodShort}</span>
                   </div>
                   {currency !== "EUR" && (
-                    <div className="text-slate-500 text-xs mt-1">
+                    <div className="text-gray-400 text-xs mt-1">
                       ≈ €{plan.basePrice} / {plan.period}
                     </div>
                   )}
@@ -253,8 +253,8 @@ export default function PricingPage() {
                 <ul className="space-y-3 mb-8 flex-1">
                   {plan.features.map((feature) => (
                     <li key={feature} className="flex items-start gap-2">
-                      <CheckCircle className="w-4 h-4 text-emerald-400 flex-shrink-0 mt-0.5" />
-                      <span className="text-slate-300 text-sm">{feature}</span>
+                      <CheckCircle className="w-4 h-4 text-emerald-500 flex-shrink-0 mt-0.5" />
+                      <span className="text-gray-600 text-sm">{feature}</span>
                     </li>
                   ))}
                 </ul>
@@ -264,7 +264,7 @@ export default function PricingPage() {
                   className={`w-full py-3 rounded-xl font-semibold text-sm transition-all ${
                     plan.popular
                       ? "btn-primary text-white"
-                      : "bg-slate-700 hover:bg-slate-600 text-white border border-slate-600"
+                      : "bg-gray-100 hover:bg-gray-200 text-gray-700 border border-gray-200"
                   }`}
                 >
                   {paymentMethod === "stripe" ? "💳 Pagar com Stripe" : "🔵 Pagar com PayPal"}
@@ -274,10 +274,10 @@ export default function PricingPage() {
           </div>
 
           {/* Payment Security */}
-          <div className="bg-slate-800 border border-slate-700 rounded-2xl p-8 mb-12">
+          <div className="bg-gray-50 border border-gray-200 rounded-2xl p-8 mb-12">
             <div className="flex items-center gap-3 mb-6">
-              <Shield className="w-6 h-6 text-emerald-400" />
-              <h3 className="text-white font-semibold text-lg">Pagamento 100% Seguro</h3>
+              <Shield className="w-6 h-6 text-emerald-500" />
+              <h3 className="text-gray-900 font-semibold text-lg">Pagamento 100% Seguro</h3>
             </div>
             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
               {[
@@ -305,8 +305,8 @@ export default function PricingPage() {
                 <div key={item.title} className="flex items-start gap-3">
                   <span className="text-2xl">{item.icon}</span>
                   <div>
-                    <div className="text-white font-medium text-sm">{item.title}</div>
-                    <div className="text-slate-400 text-xs mt-0.5">{item.desc}</div>
+                    <div className="text-gray-900 font-medium text-sm">{item.title}</div>
+                    <div className="text-gray-500 text-xs mt-0.5">{item.desc}</div>
                   </div>
                 </div>
               ))}
@@ -315,7 +315,7 @@ export default function PricingPage() {
 
           {/* FAQ */}
           <div className="max-w-3xl mx-auto">
-            <h3 className="text-white font-bold text-2xl text-center mb-8">
+            <h3 className="text-gray-900 font-bold text-2xl text-center mb-8">
               Perguntas Frequentes
             </h3>
             <div className="space-y-4">
@@ -341,9 +341,9 @@ export default function PricingPage() {
                   a: "Absolutamente. Todos os dados são encriptados e nunca partilhados com terceiros. Consulte a nossa política de privacidade.",
                 },
               ].map((faq) => (
-                <div key={faq.q} className="bg-slate-800 border border-slate-700 rounded-xl p-5">
-                  <h4 className="text-white font-medium mb-2">{faq.q}</h4>
-                  <p className="text-slate-400 text-sm leading-relaxed">{faq.a}</p>
+                <div key={faq.q} className="bg-white border border-gray-200 rounded-xl p-5 shadow-sm">
+                  <h4 className="text-gray-900 font-medium mb-2">{faq.q}</h4>
+                  <p className="text-gray-500 text-sm leading-relaxed">{faq.a}</p>
                 </div>
               ))}
             </div>
