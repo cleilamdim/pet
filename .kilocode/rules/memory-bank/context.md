@@ -1,8 +1,8 @@
-# Active Context: Next.js Starter Template
+# Active Context: PetDiet Pro – Pet Diet Control App
 
 ## Current State
 
-**Template Status**: ✅ Ready for development
+**App Status**: ✅ Fully built and deployed
 
 The template is a clean Next.js 16 starter with TypeScript and Tailwind CSS 4. It's ready for AI-assisted expansion to build any type of application.
 
