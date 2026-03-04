@@ -13,8 +13,10 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "Next.js Template",
-  description: "A minimal Next.js starter template",
+  title: "PetDiet Pro – Controle a Dieta do Seu Pet",
+  description:
+    "Plataforma completa para controle nutricional e dietético dos seus animais de estimação. Cálculo calórico, nutrientes, suplementação e muito mais.",
+  keywords: "dieta pet, nutrição animal, cálculo calórico pet, saúde animal",
 };
 
 export default function RootLayout({
@@ -23,7 +25,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en">
+    <html lang="pt">
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >
