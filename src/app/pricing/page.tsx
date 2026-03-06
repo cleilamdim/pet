@@ -3,7 +3,13 @@
 import { useState, useEffect } from "react";
 import Header from "@/components/layout/Header";
 import Footer from "@/components/layout/Footer";
-import { CheckCircle, Shield, Zap, Star, CreditCard } from "lucide-react";
+import { CheckCircle, Shield, Zap, Star, CreditCard, Loader2 } from "lucide-react";
+import { loadStripe } from "@stripe/stripe-js";
+
+// Initialize Stripe (use your publishable key)
+const stripePromise = loadStripe(
+  process.env.NEXT_PUBLIC_STRIPE_PUBLISHABLE_KEY || "pk_test_placeholder"
+);
 
 // Currency conversion rates (base: EUR)
 const currencies: Record<string, { symbol: string; rate: number; name: string }> = {
@@ -109,6 +115,7 @@ export default function PricingPage() {
   const [loading, setLoading] = useState(true);
   const [selectedPlan, setSelectedPlan] = useState<string | null>(null);
   const [paymentMethod, setPaymentMethod] = useState<"stripe" | "paypal">("stripe");
+  const [isProcessing, setIsProcessing] = useState(false);
 
   useEffect(() => {
     // Detect user's country via IP geolocation
@@ -126,12 +133,44 @@ export default function PricingPage() {
       .finally(() => setLoading(false));
   }, []);
 
-  const handleSubscribe = (planId: string) => {
+  const handleSubscribe = async (planId: string) => {
+    if (paymentMethod === "paypal") {
+      alert(
+        `PayPal em breve! Por enquanto, use o Stripe para pagamento seguro.`
+      );
+      return;
+    }
+
+    setIsProcessing(true);
     setSelectedPlan(planId);
-    // In production, this would redirect to Stripe/PayPal checkout
-    alert(
-      `Redirecionando para pagamento via ${paymentMethod === "stripe" ? "Stripe" : "PayPal"}...\n\nPlano: ${planId}\nMoeda: ${currency}\n\n(Integração de pagamento requer chaves de API)`
-    );
+
+    try {
+      const response = await fetch("/api/stripe/checkout", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          planId,
+          currency: currency.toLowerCase(),
+        }),
+      });
+
+      const data = await response.json();
+
+      if (data.url) {
+        window.location.href = data.url;
+      } else if (data.error) {
+        alert(`Erro: ${data.error}`);
+      } else {
+        alert("Erro ao processar pagamento. Tente novamente.");
+      }
+    } catch (error) {
+      console.error("Payment error:", error);
+      alert("Erro de conexão. Verifique a sua internet e tente novamente.");
+    } finally {
+      setIsProcessing(false);
+    }
   };
 
   return (
@@ -261,13 +300,23 @@ export default function PricingPage() {
 
                 <button
                   onClick={() => handleSubscribe(plan.id)}
+                  disabled={isProcessing}
                   className={`w-full py-3 rounded-xl font-semibold text-sm transition-all ${
                     plan.popular
                       ? "btn-primary text-white"
                       : "bg-gray-100 hover:bg-gray-200 text-gray-700 border border-gray-200"
-                  }`}
+                  } ${isProcessing ? "opacity-50 cursor-not-allowed" : ""}`}
                 >
-                  {paymentMethod === "stripe" ? "💳 Pagar com Stripe" : "🔵 Pagar com PayPal"}
+                  {isProcessing && selectedPlan === plan.id ? (
+                    <span className="flex items-center justify-center gap-2">
+                      <Loader2 className="w-4 h-4 animate-spin" />
+                      A processar...
+                    </span>
+                  ) : paymentMethod === "stripe" ? (
+                    "💳 Pagar com Stripe"
+                  ) : (
+                    "🔵 Pagar com PayPal"
+                  )}
                 </button>
               </div>
             ))}
